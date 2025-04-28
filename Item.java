@@ -1,21 +1,14 @@
-public class Item {
-    private String type;
-    private int value;
-    private int level;
 
 
-    public Item(String type, int value, int level) {
-        this.type = type;
-        this.value = value;
-        this.level = level;
+public abstract class Item {
+    protected String name;
+    protected int bonus;
+
+    public Item(String name, int bonus) {
+        this.name = name;
+        this.bonus = bonus;
     }
 
-
-
-    public String getType()
-    { return type; }
-    public int getValue()
-    { return value; }
-    public int getLevel()
-    { return level; }
+    public int getBonus() { return bonus; }
+    public String getName() { return name; }
 }
