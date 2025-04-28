@@ -1,4 +1,4 @@
-
+package dndgame;
 
 public abstract class Item {
     protected String name;
@@ -9,6 +9,6 @@ public abstract class Item {
         this.bonus = bonus;
     }
 
-    public int getBonus() { return bonus; }
     public String getName() { return name; }
+    public int getBonus() { return bonus; }
 }

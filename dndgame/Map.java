@@ -1,3 +1,4 @@
+package dndgame;
 
 import java.util.Random;
 
@@ -10,39 +11,40 @@ public class Map {
         this.width = width;
         this.height = height;
         this.grid = new char[height][width];
-        generateMaze();
+        generate();
     }
 
-    private void generateMaze() {
+    private void generate() {
         for (int i = 0; i < height; i++)
             for (int j = 0; j < width; j++)
                 grid[i][j] = '.';
-
-        grid[0][0] = 'P'; // Player
+        grid[0][0] = 'P'; // Player start
         grid[height - 1][width - 1] = 'E'; // Exit
     }
 
     public void placeObjects(int monsters, int treasures) {
         Random rand = new Random();
-        int placedMonsters = 0, placedTreasures = 0;
-
-        while (placedMonsters < monsters) {
+        int m = 0, t = 0;
+        while (m < monsters) {
             int x = rand.nextInt(height);
             int y = rand.nextInt(width);
             if (grid[x][y] == '.') {
                 grid[x][y] = 'M';
-                placedMonsters++;
+                m++;
             }
         }
-
-        while (placedTreasures < treasures) {
+        while (t < treasures) {
             int x = rand.nextInt(height);
             int y = rand.nextInt(width);
             if (grid[x][y] == '.') {
                 grid[x][y] = 'T';
-                placedTreasures++;
+                t++;
             }
         }
+    }
+
+    public char[][] getGrid() {
+        return grid;
     }
 
     public void printMap() {
@@ -51,10 +53,6 @@ public class Map {
                 System.out.print(c + " ");
             System.out.println();
         }
-    }
-
-    public char[][] getGrid() {
-        return grid;
     }
 
     public int getWidth() { return width; }
